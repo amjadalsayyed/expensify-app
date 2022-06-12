@@ -5,9 +5,14 @@ import AppRouter from "./routers/AppRouter";
 import configstore from "./store/configstore";
 import "normalize.css/normalize.css";
 import "./styles/styles.css";
-import { addExpense, removeExpense, editExpense } from "./actions/expenses";
+import {
+  startSetExpenses,
+  removeExpense,
+  editExpense,
+} from "./actions/expenses";
 import { setTextFilter } from "./actions/filters";
 import getvisible from "./selectorrs/expenses";
+import "./firebase/firebase";
 
 const store = configstore();
 
@@ -16,4 +21,8 @@ const jsx = (
     <AppRouter />
   </Provider>
 );
-ReactDOM.render(jsx, document.getElementById("app"));
+ReactDOM.render(<p>loading ...</p>, document.getElementById("app"));
+
+store.dispatch(startSetExpenses()).then(() => {
+  ReactDOM.render(jsx, document.getElementById("app"));
+});
