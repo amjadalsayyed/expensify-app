@@ -1,0 +1,22 @@
+.box-layout {
+  background: url("/image/bg.jpg");
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.box-layout__box {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 3px;
+  text-align: center;
+  padding: var(--Lsize) var(--Msize);
+  width: 50rem;
+}
+
+.box-layout__tite {
+  margin: 0 0 var(--Msize) 0;
+  line-height: 1;
+}

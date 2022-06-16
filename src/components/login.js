@@ -4,8 +4,14 @@ import { startLogin } from "../actions/auth";
 
 const Login = ({ startLogin }) => {
   return (
-    <div>
-      <button onClick={startLogin}>Login</button>
+    <div className="box-layout">
+      <div className="box-layout__box">
+        <h1 className="box-layout__tite">Expensify </h1>
+        <p>its time to get your expenses under control</p>
+        <button className="button" onClick={startLogin}>
+          Login With Google
+        </button>
+      </div>
     </div>
   );
 };

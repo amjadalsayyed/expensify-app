@@ -5,6 +5,7 @@ import AppRouter, { history } from "./routers/AppRouter";
 import configstore from "./store/configstore";
 import "normalize.css/normalize.css";
 import "./styles/styles.css";
+import LoadingPage from "./components/LoadingPage";
 import {
   startSetExpenses,
   removeExpense,
@@ -28,7 +29,7 @@ const renderapp = () => {
     hasREndered = true;
   }
 };
-ReactDOM.render(<p>loading ...</p>, document.getElementById("app"));
+ReactDOM.render(<LoadingPage />, document.getElementById("app"));
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
