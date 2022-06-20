@@ -18,4 +18,5 @@
 .button--sec {
   background: #888888;
   margin-top: var(--Msize);
+  margin-bottom: var(--Msize);
 }

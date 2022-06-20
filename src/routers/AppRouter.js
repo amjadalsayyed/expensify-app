@@ -9,16 +9,18 @@ import notfound from "../components/notfound";
 import PublicRoute from "./publicRoute";
 import Login from "../components/login";
 import PrivateRoute from "./privateRoute";
+import ConfirmModel from "../components/confirmModel";
 export const history = createHistory();
 
 const AppRouter = () => (
   <Router history={history}>
     <div>
       <Switch>
-        <PublicRoute path="/" component={Login} exact={true} />;
+        <PublicRoute path="/" component={Login} exact={true} />
         <PrivateRoute path="/dashboard" component={Expense} />
         <PrivateRoute path="/create" component={Expenseadd} />
         <PrivateRoute path="/edit/:id" component={edit} />
+        <PrivateRoute path="/confirm/:id" component={ConfirmModel} />
         <Route component={notfound} />
       </Switch>
     </div>

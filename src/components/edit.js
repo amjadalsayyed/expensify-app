@@ -1,14 +1,17 @@
 import React from "react";
 import { connect } from "react-redux";
 import ExpenseForm from "./expenseform";
-import {
-  editExpense,
-  startEditExpense,
-  removeExpense,
-  startRemoveExpense,
-} from "../actions/expenses";
+import ConfirmModel from "./confirmModel";
+import { startEditExpense, startRemoveExpense } from "../actions/expenses";
+import { showModal, hideModal } from "../actions/modal";
 
 const edit = (props) => {
+  const startRemove = () => {
+    props.dispatch(startRemoveExpense({ id: props.expense.id }));
+    props.dispatch(hideModal(props.showmodal));
+    props.history.push("/");
+  };
+
   return (
     <div>
       <div className="page-header">
@@ -24,11 +27,11 @@ const edit = (props) => {
             props.history.push("/");
           }}
         />
+        <ConfirmModel startRemove={startRemove} />
         <button
           className="button button--sec"
           onClick={() => {
-            props.dispatch(startRemoveExpense({ id: props.expense.id }));
-            props.history.push("/");
+            props.dispatch(showModal(props.showmodal));
           }}
         >
           Remove Expense
@@ -39,6 +42,7 @@ const edit = (props) => {
 };
 const mapStateToProps = (state, props) => {
   return {
+    showmodal: state.modal.showmodal,
     expense: state.expenses.find((expense) => {
       return expense.id === props.match.params.id;
     }),
